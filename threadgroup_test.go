@@ -81,6 +81,10 @@ func TestThreadGroupStop(t *testing.T) {
 	if tg.isStopped() {
 		t.Error("isStopped returns true on unstopped ThreadGroup")
 	}
+	// IsStopped should also return false.
+	if tg.IsStopped() {
+		t.Error("IsStopped should reutrn false")
+	}
 	// The cannel provided by StopChan should be open.
 	select {
 	case <-tg.StopChan():

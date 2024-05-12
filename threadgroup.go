@@ -113,6 +113,12 @@ func (tg *ThreadGroup) AfterFunc(duration time.Duration, fn func()) {
 	tg.afterFnTimers[id] = t
 }
 
+// IsStopped will instantly return whether the threadgroup has been stopped or
+// not.
+func (tg *ThreadGroup) IsStopped() bool {
+	return tg.isStopped()
+}
+
 // AfterStop ensures that a function will be called after Stop() has been called
 // and after all running routines have called Done(). The functions will be
 // called in reverse order to how they were added, similar to defer. If Stop()
